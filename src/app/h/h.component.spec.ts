@@ -1,0 +1,21 @@
+import { ComponentFixture, TestBed } from '@angular/core/testing';
+
+import { HComponent } from './h.component';
+
+describe('HComponent', () => {
+  let component: HComponent;
+  let fixture: ComponentFixture<HComponent>;
+
+  beforeEach(() => {
+    TestBed.configureTestingModule({
+      declarations: [HComponent]
+    });
+    fixture = TestBed.createComponent(HComponent);
+    component = fixture.componentInstance;
+    fixture.detectChanges();
+  });
+
+  it('should create', () => {
+    expect(component).toBeTruthy();
+  });
+});

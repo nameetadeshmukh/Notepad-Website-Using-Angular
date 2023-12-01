@@ -1,0 +1,20 @@
+
+
+   <form [formGroup]="fdata" (ngSubmit)="doSign()"> 
+    <div class="form-group">
+      <label for="name">Enter Username</label>
+      <input type="text" class="form-control" formControlName="username" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Username">
+      
+    </div>
+    <div class="form-group">
+      <label for="password">Enter Password</label>
+      <input type="password" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Enter Password">
+    </div>
+    <div class="form-group">
+        <label for="password">Enter Email</label>
+        <input type="email" class="form-control" formControlName="password" id="exampleInputPassword1" placeholder="Enter Email">
+      </div>
+
+    <button type="submit" class="btn btn-danger">Submit</button>
+  </form>
+

@@ -1,0 +1,147 @@
+<p>home works!</p>
+
+<table class="table">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">NAME</th>
+        <th scope="col">TASK</th>
+        <th scope="col">DATE</th>
+        <th scope="col">DAY</th>
+        <th scope="col">TIME</th>
+        <th scope="col">ACTION</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let x of userdata | paginate:{itemsPerPage:5,currentPage:p}">
+        <th scope="row">{{x.id}}</th>
+        <td>{{x.name}}</td>
+        <td>{{x.task}}</td>
+        <td>{{x.date}}</td>
+        <td>{{x.day}}</td>
+        <td>{{x.time}}</td>
+        <td><input type="submit" class="btn btn-sm btn-danger" value="Delete" (click)="deleteData(x.id)">
+            ||<input type="submit" class="btn btn-sm btn-success" value="Edit" (click)="editData(x)" data-toggle="modal" data-target="#exampleModal2">
+        </td>
+      </tr>
+      
+    </tbody>
+  </table>
+
+  <pagination-controls (pageChange)="p=$event"></pagination-controls>
+
+
+  <!-- Button trigger modal -->
+<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+    ADD
+  </button>
+
+
+  
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="fdata" (ngSubmit)="saveData(fdata.value)">
+                {{fdata.value | json}}
+                <div class="form-group">
+                  <label for="exampleInputEmail1">NAME</label>
+                  <input type="text" class="form-control" formControlName="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+                </div>
+               
+                <div class="form-group">
+                    <label for="exampleInputEmail1">TASK</label>
+                    <input type="text" class="form-control" formControlName="task" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter task">
+                    
+                </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">DATE</label>
+                    <input type="text" class="form-control" formControlName="date" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter date">
+                    
+                  </div>  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">DAY</label>
+                    <input type="text" class="form-control" formControlName="day" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter day">
+                    
+                  </div>  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">TIME</label>
+                    <input type="text" class="form-control" formControlName="time" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter time">
+                    
+                  </div>  
+                
+                <button type="submit" class="btn btn-primary">Submit</button>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+  <!-- Modal -->
+  <div class="modal fade" id="exampleModal2" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+    <div class="modal-dialog" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true">&times;</span>
+          </button>
+        </div>
+        <div class="modal-body">
+            <form [formGroup]="fdata">
+                {{fdata.value | json}}
+                <div class="form-group">
+                  <label for="exampleInputEmail1">NAME</label>
+                  <input type="text" class="form-control" formControlName="name" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter Name">
+                </div>
+               
+                <div class="form-group">
+                  <div class="col-md-12">
+                    <div class="md-form mb-0">
+                    <label for="subject">TASK</label>
+                    <input type="text" class="form-control" formControlName="task" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter task">
+                    </div>
+                  </div>  
+                </div>
+
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">DATE</label>
+                    <input type="text" class="form-control" formControlName="date" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter date">
+                    
+                  </div>  
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">DAY</label>
+                    <input type="text" class="form-control" formControlName="day" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter day">
+                    
+                  </div>
+                  <div class="form-group">
+                    <label for="exampleInputEmail1">TIME</label>
+                    <input type="text" class="form-control" formControlName="time" id="exampleInputEmail1" aria-describedby="emailHelp" placeholder="Enter time">
+                    
+                  </div>
+                
+                <button type="submit" class="btn btn-primary" (click)="Update()">Submit</button>
+              </form>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
+          <button type="button" class="btn btn-primary">Save changes</button>
+        </div>
+      </div>
+    </div>
+  </div>
